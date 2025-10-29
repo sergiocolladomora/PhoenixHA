@@ -1,15 +1,10 @@
-from playwright.sync_api import Page
-from pytest_bdd import given, when, then, scenario, parsers
-import pytest
-
 import pytest
 from pytest_bdd import given, when, then, scenarios, parsers
 from playwright.sync_api import Page
-# Assuming tictactoe.py is available
 from tictactoe import win_check, full_board_check 
 
 # Link the feature file
-scenarios('../features/tictactoe.feature')
+scenarios('features/tictactoe.feature')
 
 # --- GIVEN DEFINITIONS ---
 
