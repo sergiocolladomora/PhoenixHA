@@ -19,9 +19,8 @@
     # 1. To run all the test, execute
         pytest
 
-    # 2. Execute a specific scenario (resultCheck, inputCheck or duplicationCheck)
+    # 2. To run a specific scenario, execute (resultCheck, inputCheck or duplicationCheck)
         pytest -m scenarioname -s -v
             -m: mark the scenario
             -s: Shows print() output and debug statements
             -v: Increases verbosity (shows names of passing tests)
-
