@@ -1,11 +1,9 @@
 
 Feature: Tic Tac Toe Full Game State
-  As a player
-  I want to check the final state of the board
-  So that I know if the game is won, drawn, or ongoing
+  I want to test the correct behavior of the Tic Tac Toe game
 
   @resultCheck
-  Scenario Outline: Check Game Result based on Move Sequence
+  Scenario Outline: Check the game result with the selected moves
     Given a clean Tic-Tac-Toe board
     And the following moves have been made: "<moves>"
     When the game state check is executed
@@ -21,7 +19,7 @@ Feature: Tic Tac Toe Full Game State
 
 
 @inputCheck
-Scenario Outline: Rejecting System-Level Invalid Inputs
+Scenario Outline: Check invalid inputs
   Given a clean Tic-Tac-Toe board
   And the sequence of user inputs is set to "<inputs>"
   When the player completes the turn with the given inputs
@@ -29,19 +27,17 @@ Scenario Outline: Rejecting System-Level Invalid Inputs
   
   Examples:
     | inputs                | final_position |                                           
-    | hello, 10, 7          | 7              | #Rejects non-int ('hello') & out-of-range (10), marks 7 
-    | 10, 0, 4              | 4              | #Rejects out-of-range (10, 0), marks 4            
+    | hello, 10, 7          | 7              | #Rejects non int 'hello' and out of range 10, marks 7 
+    | 10, 0, 4              | 4              | #Rejects out of range (10, 0), marks 4            
 
 @duplicationCheck
-Scenario Outline: Rejecting Duplicate Moves
+Scenario Outline: Check when a player tries to mark a marked position
   Given a clean Tic-Tac-Toe board
-  # The sequence starts with a valid move, followed by a duplicate failure, then the final success.
   And the sequence of user inputs is set to "<inputs>"
   When the player completes the turn with the given inputs
-  # We check two things: the duplicate spot is unchanged, and the new spot is marked by 'O' (Player 2)
   Then the duplicate position <duplicate_pos> remains unchanged and <new_pos> is marked
 
   Examples:
-    | inputs                | duplicate_pos | new_pos | Description                               |
-    | 4, 4, 3               | 4             | 3       | X marks 4, O attempts 4 (duplicate), O marks 3 |
-    | 1, 1, 2               | 1             | 2       | X marks 1, O marks 2, X attempts 1 (duplicate), X marks 5 |      
+    | inputs                | duplicate_pos | new_pos |                                               
+    | 4, 4, 3               | 4             | 3       | #X marks 4, O attempts 4 (duplicate), O marks 3            
+    | 1, 1, 2               | 1             | 2       | #X marks 1, O marks 2, X attempts 1 (duplicate), X marks 5      

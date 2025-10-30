@@ -1,9 +1,7 @@
 import pytest
 from pytest_bdd import given, when, then, scenarios, parsers
-# Importa tus funciones esenciales (asume que tictactoe.py está en la raíz)
 from tictactoe import win_check, full_board_check, mark_position
 
-# Asegúrate de que esta ruta es correcta (ejemplo asumiendo feature y steps en la misma carpeta)
 scenarios('game.feature') 
 
 # --- GIVEN DEFINITIONS ---
@@ -47,7 +45,7 @@ def setup_mock_inputs(mock_inputs_list: list, inputs: str):
     # Strip quotes and split by comma to get the clean list of inputs
     inputs_list = [i.strip() for i in inputs.strip('"').split(',')]
     
-    # CRUCIAL: Load the inputs into the list that the mock will read from
+    # Load the inputs into the list that the mock will read from
     mock_inputs_list.extend(inputs_list) 
     print(f"Mock Input Queue set: {inputs_list}")
 
@@ -75,9 +73,8 @@ def call_mark_position_repeatedly(board, mock_inputs_list: list):
     """
     current_player = 'Player 1'
     
-    #We need a limit since mark_position has an infinite loop (while True).
-    # Invalid inputs are consumed internally by mark_position.
-    # We will set a high safety limit.
+
+    # A maximum number of turns to avoid infinite loops in case of errors
     MAX_TURNS = 20 # Sufficient for any sequence of 9 moves with intermittent errors
     
     for _ in range(MAX_TURNS):

@@ -78,24 +78,28 @@ def main():
 
         while game_on:
             display_board(the_board)
+            #mark the position
             the_board= mark_position(the_board, turn)
 
             if win_check(the_board):
                 display_board(the_board)
                 print('Congratulations! ' + turn + ' has won the game!')
+                #the loop ends here as the game is over
                 game_on = False
             else:
                 if full_board_check(the_board):
                     display_board(the_board)
                     print('The game is a draw!')
-                    break
+                    #the loop ends here as the game is over
+                    game_on = False
                 else:
+                    #Switch turns
                     if(turn == 'Player 1'):
                         turn = 'Player 2'
                     else:
                         turn = 'Player 1'
 
-
+        #the user is asked if they want to replay
         play = replay()
 
 if __name__ == "__main__":

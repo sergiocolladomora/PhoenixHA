@@ -16,11 +16,15 @@
         python tictactoe.py
     
 ## 3. How to run the tests
-    # 1. To run all the test, execute
-        pytest
+    # 1. Activate the environment:
+        .\venv\Scripts\Activate.ps1
 
-    # 2. To run a specific scenario, execute (resultCheck, inputCheck or duplicationCheck)
+    # 2. To run all the test, execute
+        pytest -s -v
+
+    # 3. To run a specific scenario, execute 
         pytest -m scenarioname -s -v
-            -m: mark the scenario
-            -s: Shows print() output and debug statements
-            -v: Increases verbosity (shows names of passing tests)
+            
+    -m: select scenario(replace scenarioname with resultCheck, inputCheck or duplicationCheck)
+    -s: Shows print() output and debug statements
+    -v: Increases verbosity (shows names of passing tests)
