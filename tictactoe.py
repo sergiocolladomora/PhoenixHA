@@ -1,6 +1,7 @@
 import random
 
 def display_board(board):
+    '''Displays the current state of the board.'''
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
     print('-----------')
     print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
@@ -8,6 +9,7 @@ def display_board(board):
     print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
 
 def win_check(board):
+    '''Checks if there is a win on the board.'''
     return ((board[1] == board[2] == board[3] != ' ') or
             (board[4] == board[5] == board[6] != ' ') or
             (board[7] == board[8] == board[9] != ' ') or
@@ -18,12 +20,14 @@ def win_check(board):
             (board[3] == board[5] == board[7] != ' '))
 
 def full_board_check(board):
+    '''Checks if the board is full.'''
     for i in range(1, 10):
         if board[i] == ' ':
             return False
     return True
 
 def mark_position(board, player):
+    '''Marks the board at the position chosen by the player.'''
     while True:
         try:
             # Add try/except block here:
@@ -41,6 +45,7 @@ def mark_position(board, player):
             print("Invalid position.")
 
 def replay():
+    '''Asks the players if they want to play again.'''
     while True:
         choice = input('Do you want to play again? (y/n) ')
 
@@ -58,6 +63,7 @@ def replay():
             print("Invalid input.")
 
 def main():
+    '''Main function to run the Tic-Tac-Toe game.'''
     #Intro to the game
     print("Welcome to Tic Tac Toe! \n Player 1 is 'X' and Player 2 is 'O'. \n Each player must enter the number of the position of the following board: \n 123\n 456\n 789")
     play=True
