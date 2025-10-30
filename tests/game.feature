@@ -4,7 +4,7 @@ Feature: Tic Tac Toe Full Game State
   I want to check the final state of the board
   So that I know if the game is won, drawn, or ongoing
 
-  @ResultCheck
+  @resultCheck
   Scenario Outline: Check Game Result based on Move Sequence
     Given a clean Tic-Tac-Toe board
     And the following moves have been made: "<moves>"
@@ -42,7 +42,6 @@ Scenario Outline: Rejecting Duplicate Moves
   Then the duplicate position <duplicate_pos> remains unchanged and <new_pos> is marked
 
   Examples:
-    # Sequence: V-X, D-Fail, V-O
     | inputs                | duplicate_pos | new_pos | Description                               |
     | 4, 4, 3               | 4             | 3       | X marks 4, O attempts 4 (duplicate), O marks 3 |
     | 1, 1, 2               | 1             | 2       | X marks 1, O marks 2, X attempts 1 (duplicate), X marks 5 |      
